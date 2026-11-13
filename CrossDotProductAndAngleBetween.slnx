@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../VectorTests/VectorTests.csproj" Id="aec0d2a8-4f6b-4a86-accf-0d2cd0235f0f" />
+  <Project Path="CrossDotProductAndAngleBetween.csproj" />
+</Solution>
