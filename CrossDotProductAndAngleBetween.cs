@@ -292,7 +292,11 @@ namespace CrossDotProductAndAngleBetween
                             string[] inputarray = new string[input.Length];
 
                             inputarray = input.Split(",");
-
+                            if (inputarray.Length != numCols)
+                            {
+                                Console.WriteLine("Kindly enter exactly " + numCols + " numbers");
+                                continue;
+                            }
                             for (int i = 0; i < inputarray.Length; i++)
                             {
                                 matrix1[0, i] = double.Parse(inputarray[i]);
@@ -303,6 +307,7 @@ namespace CrossDotProductAndAngleBetween
                             Console.WriteLine("Kindly enter numbers");
                             continue;
                         }
+                        
                         break;
                     }
                     whatRow++;
@@ -318,7 +323,11 @@ namespace CrossDotProductAndAngleBetween
                                 string[] inputarray = new string[input.Length];
 
                                 inputarray = input.Split(",");
-
+                                if (inputarray.Length != numCols)
+                                {
+                                    Console.WriteLine("Kindly enter exactly " + numCols + " numbers");
+                                    continue;
+                                }
                                 for (int i = 0; i < inputarray.Length; i++)
                                 {
                                     matrix1[whatRow, i] = double.Parse(inputarray[i]);
@@ -344,7 +353,11 @@ namespace CrossDotProductAndAngleBetween
                             string[] inputarray = new string[input.Length];
 
                             inputarray = input.Split(",");
-
+                            if (inputarray.Length != numCols)
+                            {
+                                Console.WriteLine("Kindly enter exactly " + numCols + " numbers");
+                                continue;
+                            }
                             for (int i = 0; i < inputarray.Length; i++)
                             {
                                 matrix2[0, i] = double.Parse(inputarray[i]);
@@ -370,7 +383,11 @@ namespace CrossDotProductAndAngleBetween
                                 string[] inputarray = new string[input.Length];
 
                                 inputarray = input.Split(",");
-
+                                if (inputarray.Length != numCols)
+                                {
+                                    Console.WriteLine("Kindly enter exactly " + numCols + " numbers");
+                                    continue;
+                                }
                                 for (int i = 0; i < inputarray.Length; i++)
                                 {
                                     matrix2[whatRow, i] = double.Parse(inputarray[i]);
@@ -400,7 +417,11 @@ namespace CrossDotProductAndAngleBetween
                         string[] inputarray = new string[input.Length];
 
                         inputarray = input.Split(",");
-
+                        if (inputarray.Length != numCols)
+                        {
+                            Console.WriteLine("Kindly enter exactly " + numCols + " numbers");
+                            continue;
+                        }
                         for (int i = 0; i < inputarray.Length; i++)
                         {
                             matrix1[0, i] = double.Parse(inputarray[i]);
@@ -426,7 +447,11 @@ namespace CrossDotProductAndAngleBetween
                             string[] inputarray = new string[input.Length];
 
                             inputarray = input.Split(",");
-
+                            if (inputarray.Length != numCols)
+                            {
+                                Console.WriteLine("Kindly enter exactly " + numCols + " numbers");
+                                continue;
+                            }
                             for (int i = 0; i < inputarray.Length; i++)
                             {
                                 matrix1[whatRow, i] = double.Parse(inputarray[i]);
@@ -523,11 +548,11 @@ namespace CrossDotProductAndAngleBetween
             List<double> temp = new List<double>();
 
             int tempPos = 0;
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int i = 0; i < matrix.GetLength(1); i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrix.GetLength(0); j++)
                 {
-                    temp.Add(matrix[i, j]);
+                    temp.Add(matrix[j, i]);
                 }
             }
 
