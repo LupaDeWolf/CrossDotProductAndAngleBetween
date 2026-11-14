@@ -15,16 +15,16 @@ namespace CrossDotProductAndAngleBetween
         {
             GetInput.GetInput input = new GetInput.GetInput();
             int whatDo = 0;
-            Console.WriteLine("Please enter one of corresponding numbers:\n1: Cross Product\n2: Dot Product\n3: Angle Between\n4: Magnetude\n5: Projection\n6: Matrix Scaler Multiplication");
+            Console.WriteLine("Please enter one of corresponding numbers:\n1: Cross Product\n2: Dot Product\n3: Angle Between\n4: Magnetude\n5: Projection\n6: Matrix Scaler Multiplication\n7: Matrix Addition\n8: Matrix Subtraction\n9: Transpose");
             while (true)
             {
                 try
                 {
 
                     whatDo = int.Parse(Console.ReadLine());
-                    if (whatDo > 6 || whatDo < 1)
+                    if (whatDo > 9 || whatDo < 1)
                     {
-                        Console.WriteLine("Please enter a number between 1 and 6");
+                        Console.WriteLine("Please enter a number between 1 and 9");
                         continue;
                     }
                 }
@@ -69,7 +69,18 @@ namespace CrossDotProductAndAngleBetween
                     matrixVals = GetMatrixInput(1, 1, 1);
                     MatrixCalculator.ScalerMult(matrixVals.Item1, GetInput.GetInput.GetDoubleInput("Please enter the number you wish to multiply by", "Please enter a number"));
                     break;
-
+                case 7:
+                    matrixVals = GetMatrixInput();
+                    MatrixCalculator.Addition(matrixVals.Item1, matrixVals.Item2);
+                    break;
+                case 8:
+                    matrixVals = GetMatrixInput();
+                    MatrixCalculator.Subtraction(matrixVals.Item1, matrixVals.Item2);
+                    break;
+                case 9:
+                    matrixVals = GetMatrixInput(1, 1, 1);
+                    MatrixCalculator.Transpose(matrixVals.Item1);
+                    break;
             }
         }
 
@@ -451,6 +462,15 @@ namespace CrossDotProductAndAngleBetween
                     matrix[i, j] = matrix[i, j] * multiplier;
                 }
             }
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + ",");
+                }
+                Console.WriteLine();
+            }
+
             return matrix;
         }
 
@@ -463,6 +483,15 @@ namespace CrossDotProductAndAngleBetween
                 {
                     result[i, j] = matrix1[i, j] + matrix2[i, j];
                 }
+            }
+
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                for (int j = 0; j < result.GetLength(1); j++)
+                {
+                    Console.Write(result[i, j] + ",");
+                }
+                Console.WriteLine();
             }
             return result;
         }
@@ -477,19 +506,49 @@ namespace CrossDotProductAndAngleBetween
                     result[i, j] = matrix1[i, j] - matrix2[i, j];
                 }
             }
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                for (int j = 0; j < result.GetLength(1); j++)
+                {
+                    Console.Write(result[i, j] + ",");
+                }
+                Console.WriteLine();
+            }
             return result;
         }
 
         public static double[,] Transpose(double[,] matrix)
         {
             double[,] result = new double[matrix.GetLength(1), matrix.GetLength(0)];
+            List<double>  temp = new List<double>;
+
+            int tempPos = 0;
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    
+                    temp.Add(matrix[i, j]);
                 }
             }
+
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                for (int j = 0;j < result.GetLength(1); j++)
+                {
+                    result[i, j] = temp[tempPos];
+                    tempPos++;
+                }
+            }
+
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                for (int j = 0; j < result.GetLength(1); j++)
+                {
+                    Console.Write(result[i, j] + ",");
+                }
+                Console.WriteLine();
+            }
+            return result;
         }
     }
 
